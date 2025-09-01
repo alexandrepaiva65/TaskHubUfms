@@ -112,6 +112,17 @@ app.get('/tasks/add', (req, res) => {
 });
 
 /**
+ * Rota para exibir a página de editar tarefas.
+ * @name GET /tasks/edit/:taskId
+ * @function
+ * @param {Object} req - Objeto de requisição do Express.
+ * @param {Object} res - Objeto de resposta do Express.
+ */
+app.get('/tasks/edit/:taskId', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'edit-task.html'));
+});
+
+/**
  * Rota para exibir os detalhes de uma tarefa específica.
  * @name GET /task/:taskId
  * @function
@@ -177,6 +188,45 @@ app.put('/api/task/:taskId/complete', (req, res) => {
 
     res.json({ message: 'Tarefa marcada como concluída!', task: tasks[taskIndex] });
 
+  } else {
+    res.status(404).json({ message: 'Tarefa não encontrada.' });
+  }
+});
+
+/**
+ * Rota para editar uma tarefa.
+ * @name PUT /api/task/:taskId
+ * @function
+ * @param {Object} req - Objeto de requisição do Express.
+ * @param {Object} res - Objeto de resposta do Express.
+ */
+app.put('/api/task/:taskId', (req, res) => {
+  const taskId = req.params.taskId;
+  const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+  if (taskIndex !== -1) {
+    tasks[taskIndex].title = req.body.title || tasks[taskIndex].title;
+    tasks[taskIndex].description = req.body.description || tasks[taskIndex].description;
+    res.json({ message: 'Tarefa editada com sucesso!', task: tasks[taskIndex] });
+  } else {
+    res.status(404).json({ message: 'Tarefa não encontrada.' });
+  }
+});
+
+/**
+ * Rota para excluir uma tarefa.
+ * @name DELETE /api/task/:taskId
+ * @function
+ * @param {Object} req - Objeto de requisição do Express.
+ * @param {Object} res - Objeto de resposta do Express.
+ */
+app.delete('/api/task/:taskId', (req, res) => {
+  const taskId = req.params.taskId;
+  const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+  if (taskIndex !== -1) {
+    const deletedTask = tasks.splice(taskIndex, 1)[0];
+    res.json({ message: 'Tarefa excluída com sucesso!', task: deletedTask });
   } else {
     res.status(404).json({ message: 'Tarefa não encontrada.' });
   }

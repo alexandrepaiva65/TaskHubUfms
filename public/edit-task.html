@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskHub - Editar Tarefa</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>TaskHub - Editar Tarefa</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Início</a></li>
+        <li><a href="/tasks">Minhas Tarefas</a></li>
+        <li><a href="/tasks/add">Adicionar Tarefa</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Editar Tarefa</h2>
+    <form id="editTaskForm">
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" required>
+      
+      <label for="description">Descrição:</label>
+      <textarea id="description" name="description" required></textarea>
+      
+      <button type="submit">Salvar Alterações</button>
+      <a href="/tasks">Cancelar</a>
+    </form>
+  </main>
+  <script src="/edit-task.js"></script>
+</body>
+</html>
