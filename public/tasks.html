@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaskHub - Lista de Tarefas</title>
-  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<body>
-  <header>
-    <h1>TaskHub - Lista de Tarefas</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="/tasks">Minhas Tarefas</a></li>
-        <li><a href="/tasks/add">Adicionar Tarefa</a></li>
-        <!-- Adicione mais links conforme necessário -->
-      </ul>
-    </nav>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-blue-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-6">
+      <h1 class="text-3xl font-bold text-center mb-4">TaskHub</h1>
+      <nav>
+        <ul class="flex justify-center space-x-6">
+          <li><a href="/" class="hover:text-blue-200 transition-colors px-3 py-2 rounded">Início</a></li>
+          <li><a href="/tasks" class="bg-blue-500 px-4 py-2 rounded-lg">Minhas Tarefas</a></li>
+          <li><a href="/tasks/add" class="hover:text-blue-200 transition-colors px-3 py-2 rounded">Adicionar Tarefa</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main>
-    <h2>Lista de Tarefas</h2>
-    <ul id="taskList"></ul>
+  <main class="flex-1 container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Lista de Tarefas</h2>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <ul id="taskList" class="space-y-3"></ul>
+      </div>
+    </div>
   </main>
-  <footer>
-    <p>Este projeto é licenciado sob <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>.</p>
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-sm">Este projeto é licenciado sob <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-blue-400 hover:text-blue-300">CC0 1.0 Universal</a>.</p>
+    </div>
   </footer>
   <script src="/tasks.js"></script>
 </body>
-
 </html>
